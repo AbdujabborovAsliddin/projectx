@@ -10,7 +10,19 @@ use App\Models\Direction;
 Route::get('/',function() {
     $directions = Direction::all();
     return view('index', compact('directions'));
-})->name('home');
+})->name('home')->middleware('auth');
+
+
+Route::get('/profile',function() {
+    return view('profile');
+})->name('profile')->middleware('auth');
+
+
+Route::get('/logout', function () {
+    Auth::logout(); // ✅ logs out the user
+    return redirect('/login'); // 🔁 go back to login
+})->name('logout');
+
 
 Route::get('/directions/{symbol_code}', function ($symbol_code) {
     $direction = Direction::where('symbol_code', $symbol_code)->firstOrFail();
