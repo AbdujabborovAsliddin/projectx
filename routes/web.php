@@ -4,19 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Direction; 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 
-Route::get('/',function() {
-    $directions = Direction::all();
-    return view('index', compact('directions'));
-})->name('home')->middleware('auth');
 
 
-Route::get('/profile',function() {
-    return view('profile');
-})->name('profile')->middleware('auth');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
+Route::get('/directions/{symbol_code}', [HomeController::class, 'direction'])->name('directions.show');
+
+Route::post('/directions/{symbol_code}/products', [ProductController::class, 'store'])->name('products.store');
+
+Route::delete('/directions/{symbol_code}/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+
+Route::delete('/directions/{symbol_code}/products/{product}', [ProductController::class, 'destroy'])
+    ->name('products.destroy');
+
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('user.edit');
 
 Route::get('/logout', function () {
     Auth::logout(); // ✅ logs out the user
@@ -24,12 +32,8 @@ Route::get('/logout', function () {
 })->name('logout');
 
 
-Route::get('/directions/{symbol_code}', function ($symbol_code) {
-    $direction = Direction::where('symbol_code', $symbol_code)->firstOrFail();
-    return view('directions', compact('direction'));
-});
-Route::get('/login',[AuthManager::class,'login'])->name('login');
-Route::post('/login',[AuthManager::class,'loginPost'])->name('login.post');
+Route::get('/login', [AuthManager::class, 'login'])->name('login');
+Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
 
 // Route::get('/auth', function () {
 //     return view('login');

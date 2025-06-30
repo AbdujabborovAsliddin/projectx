@@ -22,8 +22,8 @@
                         </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Visitors</p>
-                                <h4 class="card-title">1,294</h4>
+                                <p class="card-category">Total Directions</p>
+                                <h4 class="card-title">{{ $totalDirections }}</h4>
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                         </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Sales</p>
-                                <h4 class="card-title">$ 1,345</h4>
+                                <p class="card-category">Total Products</p>
+                                <h4 class="card-title">{{ $totalProducts }}</h4>
                             </div>
                         </div>
                     </div>
@@ -70,20 +70,20 @@
         $shadowClasses = ['bubble-shadow', 'curves-shadow', 'skew-shadow'];
         $shadow = $shadowClasses[$loop->index % count($shadowClasses)];
         @endphp
-        
-            <div class="col-md-4">
+
+        <div class="col-md-4">
             <a href="/directions/{{ $direction->symbol_code }}">
                 <div class="card card-secondary bg-secondary-gradient">
                     <div style="min-height: 200px;" class="card-body {{ $shadow }}">
                         <h1>{{ $direction->name }}</h1>
                         <h5 class="op-8"> {{ $direction->description }}</h5>
                         <div class="pull-right">
-                            <h3 class="fw-bold op-8"><small>{{ $direction->created_at }}</small></h3>
+                            <h3 class="fw-bold op-8"><small>{{ $direction->created_at->format('d.m.Y') }}</small></h3>
                         </div>
                     </div>
                 </div>
             </a>
-            </div>
+        </div>
         @endforeach
 
 
@@ -91,6 +91,19 @@
 
     </div>
 
+
+
+
+
+
+
+
+    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+        <div>
+            <h3 class="fw-bold mb-3">Reports</h3>
+            <h6 class="op-7 mb-2">Monthly reports</h6>
+        </div>
+    </div>
 
 
 

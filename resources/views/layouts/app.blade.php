@@ -520,8 +520,8 @@
     <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
 
     <!-- Demo Scripts (do not include in production) -->
-    <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('assets/js/demo.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
+    <script src="{{ asset('assets/js/demo.js') }}"></script> -->
 
     <!-- Example Sparkline Charts -->
     <script>
@@ -552,6 +552,9 @@
             fillColor: "rgba(255, 165, 52, .14)",
         });
     </script>
+
+    @yield('scripts')
+
 </body>
 
 </html>

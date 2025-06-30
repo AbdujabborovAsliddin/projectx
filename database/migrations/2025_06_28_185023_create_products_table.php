@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('direction_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->string('volume')->nullable();     // e.g., 1L, 0.5L
             $table->string('material')->nullable();   // e.g., Plastic, Glass, Tetra Pak
             $table->integer('price')->nullable();     // Price in UZS
             $table->integer('amount')->nullable();     // Price in UZS
             $table->boolean('is_available')->default(true);
-    
             $table->timestamps();
         });
     }

@@ -29,4 +29,10 @@ class AuthManager extends Controller
             'login' => 'Invalid login or password!',
         ]);
     }
+
+    public function profile(Request $request)
+    {
+
+        return redirect()->back()->with('success', 'Product added!');
+    }
 }

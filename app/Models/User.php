@@ -22,7 +22,12 @@ class User extends Authenticatable
         'email',
         'login',
         'password',
+        'direction_id',
     ];
+    public function directions()
+    {
+        return $this->belongsToMany(Direction::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

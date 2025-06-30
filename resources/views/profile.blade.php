@@ -12,7 +12,9 @@
         </div>
         <div class="ms-md-auto py-2 py-md-0">
             <a href="#" class="btn btn-label-info btn-round me-2">Edit profile</a>
-            <a href="#" class="btn btn-primary btn-round">Add user</a>
+            <a id="alert_demo_5" class="btn btn-primary btn-round">
+                Add Product
+            </a>
         </div>
     </div>
 
@@ -102,5 +104,111 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<form id="addProductForm" style="display: none;" action=" " method="POST">
+    @csrf
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Form Elements</div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="">
+                    <div class="form-group">
+                        <input name="login" type="text" class="form-control" id="in0" placeholder="Relative direction" value=" " />
+                    </div>
+                    <div class="form-group">
+                        <input name="email" type="text" class="form-control" id="in1" placeholder="Enter Name" />
+                    </div>
+                    <div class="form-group">
+                        <input name="password" type="text" class="form-control" id="in2" placeholder="Enter Description" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Your skills</label>
+                        <div class="selectgroup selectgroup-pills">
+                            @foreach($directions as $direction)
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="direction_id" value="{{$direction->id}}" class="selectgroup-input">
+                                <span class="selectgroup-button">{{$direction->name}}</span>
+                            </label>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <button type="submit" id="realSubmitBtn" style="display: none;"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+
+@endsection
+
+
+
+
+@section('scripts')
+
+<script>
+    var SweetAlert2Demo = (function() {
+        var initDemos = function() {
+            $("#alert_demo_5").click(function(e) {
+
+                const formElement = document.getElementById("addProductForm");
+
+                // Clone the form to avoid DOM removal
+                const formClone = formElement.cloneNode(true);
+                formClone.id = "addProductFormClone";
+                formClone.style.display = "block";
+
+
+                swal({
+                    title: "Input Something",
+                    content: formClone,
+                    buttons: {
+                        cancel: {
+                            visible: true,
+                            className: "btn btn-danger",
+                        },
+                        confirm: {
+                            className: "btn btn-success",
+                        },
+                    },
+                }).then((willSubmit) => {
+                    if (willSubmit) {
+                        formClone.submit(); // or document.getElementById("realSubmitBtn").click();
+                    }
+                });
+            });
+
+        };
+
+        return {
+            init: function() {
+                initDemos();
+            },
+        };
+    })();
+
+    jQuery(document).ready(function() {
+        SweetAlert2Demo.init();
+    });
+</script>
 
 @endsection
