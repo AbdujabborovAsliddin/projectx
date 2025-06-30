@@ -15,6 +15,10 @@ class ProductController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'volume' => 'nullable|string|max:50',
+            'price' => 'nullable|numeric',
+            'amount' => 'nullable|integer',
         ]);
 
         $validated['direction_id'] = $direction->id;

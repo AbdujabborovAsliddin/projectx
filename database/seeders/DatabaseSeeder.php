@@ -1,8 +1,8 @@
 <?php
-
 namespace Database\Seeders;
-use App\Models\Direction;
 
+
+use App\Models\Direction;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        $this->call(ProductSeeder::class);
-        $this->call(UserSeeder::class);
         $this->call(DirectionSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }
