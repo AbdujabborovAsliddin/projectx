@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -19,6 +20,7 @@ Route::post('/directions/{symbol_code}/products', [ProductController::class, 'st
 
 Route::delete('/directions/{symbol_code}/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::delete('/directions/{symbol_code}/products/{product}', [ProductController::class, 'destroy'])
     ->name('products.destroy');

@@ -14,8 +14,5 @@ class Direction extends Model
     {
         return $this->hasMany(Product::class);
     }
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
+
 }

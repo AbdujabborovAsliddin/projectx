@@ -47,7 +47,7 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="/" class="logo">
-                        <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand" height="20" />
+                        <img src="{{ asset('assets/img/logo_v.png') }}" alt="navbar brand" class="navbar-brand" height="20" />
                     </a>
                     <div class="nav-toggle">
                         <button class="btn btn-toggle toggle-sidebar">
@@ -81,7 +81,7 @@
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand" height="20" />
+                            <img src="{{ asset('assets/img/logo_v.png') }}" alt="navbar brand" class="navbar-brand" height="20" />
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">
@@ -104,7 +104,7 @@
                             <div class="input-group">
 
 
-                                <form action="" method="GET">
+                                <form class="d-flex"action="{{ route('search') }}" method="GET">
 
                                     <div class="input-group-prepend">
                                         <button type="submit" class="btn btn-search pe-1">
